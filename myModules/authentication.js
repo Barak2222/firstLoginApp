@@ -1,24 +1,22 @@
-var currentUser = null;
+
 
 var auth = {
-	try: function(user){
+	login: function(user, session){
 		if(user.username == "user1" && user.password == "pass1"){
-			currentUser = user.username;
+			session.currentUser = user.username;
+			//currentUser = user.username;
 			return true
 		}
 		return false;
 	},
 
 	middleAuth: function(req, res, next){
-		if(auth.current()){
+		if(req.session.currentUser){
 			next();
 		} else {
 			res.redirect('/public/accessDenied.html');
 		}
 	},
-	current: function(){
-		return currentUser;
-	}
 }
 
 module.exports = auth;
