@@ -4,33 +4,20 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 var auth = require('./myModules/authentication');
+var users = require('./myModules/users');
 
 var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({extended: false});
 
 
 app.use(session({
-	secret: 'keyboard cat',
-	cookie: { maxAge: 5000 },
-	saveUninitialized: true, // database something
-	resave: true, //database stuff
+	secret: 'd390dje89wjd2398dj',
+	cookie: { maxAge: 300000 },
+	saveUninitialized: true,
+	resave: true,
 }));
 
-// Access the session as req.session
-app.get('/demo', function(req, res, next) {
-  	var sess = req.session;
-  	console.log(sess);
-  	if (sess.views) {
-    	sess.views++;
-    	res.setHeader('Content-Type', 'text/html')
-    	res.write('<p>views: ' + sess.views + '</p>')
-    	res.write('<p>expires in: ' + (sess.cookie.maxAge / 1000) + 's</p>')
-    	res.end()
-  	} else {
-    	sess.views = 1
-    	res.end('welcome to the session demo. refresh!')
-  	}
-});
+
 
 app.post('/login', parseUrlencoded, function(req, res){
 	if (!req.body) return res.sendStatus(400);
@@ -51,6 +38,15 @@ app.get('/', function(req, res){
 		res.redirect(__dirname + '/public/login.html');
 	}
 });*/
+
+app.get('/authRequired/getCalc', auth.middleAuth, function(req, res){
+	var data = users.getCalc(req.session.currentUser);
+	res.json(data);
+});
+
+app.post('/authRequired/setCalc/:num', auth.middleAuth, function(req, res){
+	users.setCalc(req.session.currentUser, req.params.num);
+});
 
 app.get('/public/:file', function(req, res){
 		res.sendFile(__dirname + '/public/' + req.params.file);

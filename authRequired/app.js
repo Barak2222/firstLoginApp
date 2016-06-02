@@ -62,12 +62,28 @@ var calc = {
 			btn.appendChild(text);
 			elements.calcMain.appendChild(div);
 		}
+		calc.getValFromServer();
 	},
 	init: function(){
 		for(i = 0; i < elements.calcBtns.length; i ++){
 			var e = elements.calcBtns[i];
 			e.addEventListener('click', this.btnHandler, false);
 		}
+	},
+	getValFromServer: function(){
+		$.getJSON( "/authRequired/getCalc", function( data ) {
+  			var current = Number(data);
+  			calc.updateResult(current);
+		})
+		.fail(function(){
+			console.log('error while trying to get data from server');
+		})
+	},
+	setValToServer: function(val){
+		$.post("/authRequired/setCalc/" + val)
+  		.fail(function(data){
+			console.log('failed to post to server! ' + data);
+		});
 	},
 	btnHandler: function(e){
 		var command = e.target.name;
@@ -137,6 +153,7 @@ var calc = {
 	updateResult: function(num){
 		this.updateScreen(num);
 		this.currentValue = num;
+		this.setValToServer(num);
 	},
 	updateScreen: function(num){
 		elements.calcScreen.value = num;
