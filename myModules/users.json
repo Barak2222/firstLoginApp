@@ -1,0 +1,22 @@
+[
+	{
+		"id" : "barak",
+		"password" : "123456",
+		"type" : "admin"
+	},
+	{
+		"id" : "guest",
+		"password" : "123456",
+		"type" : "admin"
+	},
+	{
+		"id" : "admin",
+		"password" : "admin",
+		"type" : "admin"
+	},
+	{
+		"id" : "308209287",
+		"password" : "barak",
+		"type" : "admin"
+	}
+]

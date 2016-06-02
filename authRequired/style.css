@@ -1,0 +1,88 @@
+#nav {
+	text-align: center;
+	background-color: #b3d9ff;
+	padding: 2px;
+}
+#nav li{
+	display: inline-block;
+	margin: 5px 5px;
+}
+body > div{
+	margin-top: 6px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+.page{
+	background-color: #cce6ff;
+	width: 100%;
+	height: 400px;
+	text-align: center;
+}
+
+#profilePage img{
+	float: left;
+	width: 156px;
+	height: 200px;
+	margin: 10px;
+}
+.page content{
+	width: 80%;
+	float: left;
+	text-align: left;
+}
+li *{
+	font-size: 1em;
+	font-weight: bold;
+}
+#footer{
+	background-color: #e6f3ff;
+	width: 100%;
+	height: 60px;
+	clear: both;
+}
+#calculatorPage, #readMePage{
+	display: none;
+}
+
+#calculatorContainer{
+	margin: 10px auto;
+	text-align: center;
+	width: 240px;
+	height: 300px;
+	background-color: #b3b3b3;
+	border-radius: 10px;
+	border: 2px solid ;
+}
+#calculatorContainer *{
+	font-size: 30px;
+}
+#calc-top{
+	width: 240px;
+	height: 60px;
+}
+#calc-top input{
+	text-align: right;
+	width: 220px;
+	height: 50px;
+	margin: 5px 10px 5px 10px;
+	border-radius: 10px;
+}
+#calc-main > div{
+	width: 60px;
+	height: 60px;
+	float: left;
+}
+#calc-main button{
+	border-radius: 10px;
+	margin-top: 10px;
+	width: 40px;
+}
+#footer p{
+	text-align: center;
+	font-size: 10px;
+}
+.container{
+	margin: 0 auto;
+	width: 50%;
+}
