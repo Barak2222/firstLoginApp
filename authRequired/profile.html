@@ -1,11 +1,15 @@
 <html>
 <head>
-	<title>Barak Cohen ex.2</title>
+	<title>Barak Cohen ex.3</title>
 	<script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
 	<script src = "app.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css"> 
 </head>
 <body>
+	<div id="user">
+		<button id = "logout">log out</button>
+		<h5>logged in as: <span id="currentUser"></span></h5>
+	</div>
 	<div id = "nav">
 		<ul>
 			<li><button id = "navProfile" class = "navBtns">profile</button></li>
@@ -16,6 +20,7 @@
 
 	<div id = "profilePage" class = "page"><div class = "container">
 		<h2>Barak Cohen's profile</h2>
+		<h3>Random quote: <span id="randomQuote"></span></h3>
 		<content>
 			<img src = "pp.jpg">
 			<p>Birthday: October 13</p>
@@ -45,7 +50,7 @@
 	</div>
 
 	<div id = "footer">
-	<p>(c) Barak Cohen 2016</p>
+		<p>(c) Barak Cohen 2016</p>
 	</div>
 </body>
 </html>

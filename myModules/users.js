@@ -2,7 +2,7 @@ var users = [
 	{
 		id : "guest",
 		password : "123456",
-		type : "admin",
+		type : "default",
 		calc : "0"
 	},
 	{

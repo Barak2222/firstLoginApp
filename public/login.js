@@ -10,8 +10,6 @@ $('form').on('submit', function(e){
 		url: '/login',
 		data: userData,
 	}).done(function(dataRecieved){
-		console.log(dataRecieved);
-		console.log(dataRecieved);
 		if(dataRecieved){
 			window.location.href = "/authRequired/profile.html";
 		} else {

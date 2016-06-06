@@ -3,6 +3,8 @@ window.onload = function(){
 	navigation.init();
 	calc.create();
 	calc.init();
+	randomQuote.init();
+	user.init();
 }
 
 var elements = {
@@ -19,6 +21,43 @@ var elements = {
 		this.pages = document.getElementsByClassName("page");
 		this.calcMain = document.getElementById("calc-main");
 		this.calcScreen = document.getElementById("claculator-display");
+	}
+}
+
+var user = {
+	init: function(){
+		$('#logout').on('click', user.logout);
+		$.getJSON( "/authRequired/getCurrentUser", function( data ) {
+  			$('#currentUser').text(data);
+		})
+		.fail(function(){
+			console.log('error while trying to get data from server');
+		})
+	},
+	logout: function(){
+		$.getJSON( "/authRequired/logout", function( data ) {
+  			console.log(data);
+  			if(data == true || data == "true"){
+  				window.location.href = "/public/login.html";
+  			} else {
+  				console.log('error disconnecting');
+  				console.log(data);
+  			}
+		})
+		.fail(function(){
+			console.log('error while trying to get data from server');
+		})
+	}
+}
+
+var randomQuote = {
+	init: function(){
+		$.getJSON( "/authRequired/getQuote", function( data ) {
+  			$('#randomQuote').text(data);
+		})
+		.fail(function(){
+			console.log('error while trying to get data from server');
+		})
 	}
 }
 
