@@ -27,7 +27,7 @@ var elements = {
 var user = {
 	init: function(){
 		$('#logout').on('click', user.logout);
-		$.getJSON( "/authRequired/getCurrentUser", function( data ) {
+		$.getJSON( "/www/getCurrentUser", function( data ) {
   			$('#currentUser').text(data);
 		})
 		.fail(function(){
@@ -35,7 +35,7 @@ var user = {
 		})
 	},
 	logout: function(){
-		$.getJSON( "/authRequired/logout", function( data ) {
+		$.getJSON( "/www/logout", function( data ) {
   			console.log(data);
   			if(data == true || data == "true"){
   				window.location.href = "/public/login.html";
@@ -52,7 +52,7 @@ var user = {
 
 var randomQuote = {
 	init: function(){
-		$.getJSON( "/authRequired/getQuote", function( data ) {
+		$.getJSON( "/www/getQuote", function( data ) {
   			$('#randomQuote').text(data);
 		})
 		.fail(function(){
@@ -110,7 +110,7 @@ var calc = {
 		}
 	},
 	getValFromServer: function(){
-		$.getJSON( "/authRequired/getCalc", function( data ) {
+		$.getJSON( "/www/getCalc", function( data ) {
   			var current = Number(data);
   			calc.updateResult(current);
 		})
@@ -119,7 +119,7 @@ var calc = {
 		})
 	},
 	setValToServer: function(val){
-		$.post("/authRequired/setCalc/" + val)
+		$.post("/www/setCalc/" + val)
   		.fail(function(data){
 			console.log('failed to post to server! ' + data);
 		});

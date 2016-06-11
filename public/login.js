@@ -1,5 +1,3 @@
-"ddd";
-
 $('form').on('submit', function(e){
 	e.preventDefault();
 	var form = $(this);
@@ -11,7 +9,7 @@ $('form').on('submit', function(e){
 		data: userData,
 	}).done(function(dataRecieved){
 		if(dataRecieved){
-			window.location.href = "/authRequired/profile.html";
+			window.location.href = "/www/profile.html";
 		} else {
 			window.location.href = "/public/accessDenied.html";
 		}
